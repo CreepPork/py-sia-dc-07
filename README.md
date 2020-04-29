@@ -8,17 +8,28 @@ After parsing the contents of the TCP message then it will relay the JSON-format
 
 ## Payload
 
+Example payload:
+
+```py
+b'\n9EC40027"ADC-CID"0001L0#1002[#1002|1602 00 001]\r'
+```
+
+Example result:
+
 ```json
 {
-  "username": "",
-  "password": "",
-  "asd_id": "1002",
-  "event_qualifier": "3",
-  "event_code": "602",
-  "group_number": "000",
-  "device_or_sensor_number": "01"
+  "sequence_number": 1,
+  "reciever_number": -1,
+  "line_number": 0,
+  "account_number": 1002,
+  "event_qualifier": 1,
+  "event_code": 602,
+  "group_or_partion_number": "00",
+  "zone_number_or_user_number": "001"
 }
 ```
+
+_Note:_ If the line or reciever number is not provided, it will be set to `-1`.
 
 ## Installation
 
