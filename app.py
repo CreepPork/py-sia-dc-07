@@ -58,7 +58,6 @@ def handle_client_connection(client_socket):
 
         process_request_data(request)
 
-        # client_socket.send(b'ACK')
         client_socket.close()
     except Exception as e:
         print('{} in handle_client_connection'.format(e))
