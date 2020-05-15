@@ -70,7 +70,7 @@ def handle_client_connection(client_socket):
 
 
 def process_request_data(request: bytes):
-    # example payload: b'\n9EC40027"ADC-CID"0001L0#1002[#1002|1602 00 001]\r'
+    # example payload: b'\n9EC40027"ADM-CID"0001L0#1002[#1002|1602 00 001]\r'
     print(request)
     payload = request.decode('ASCII')
 
@@ -127,7 +127,7 @@ def process_request_data(request: bytes):
     # Parse the message into a JSON format
     parsed_message_json = None
 
-    if message_protocol_id == 'ADC-CID':
+    if message_protocol_id == 'ADM-CID':
         parsed_message_json = parse_adc_cid_message(
             message_block, sequence_number, reciever_number, line_number)
     else:

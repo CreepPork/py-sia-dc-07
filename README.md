@@ -6,14 +6,14 @@ The script will handle all device communication with the supported device.
 
 After parsing the contents of the TCP message then it will relay the JSON-formatted message to a web server endpoint of your choice. There, you can act upon the contents of the message itself.
 
-Currently only ADC-CID (Adamco Contact ID) messages are supported.
+Currently only ADM-CID (Adamco Contact ID) messages are supported.
 
 ## Payload
 
 Example payload:
 
 ```py
-b'\n9EC40027"ADC-CID"0001L0#1002[#1002|1602 00 001]\r'
+b'\n9EC40027"ADM-CID"0001L0#1002[#1002|1602 00 001]\r'
 ```
 
 Example result:
