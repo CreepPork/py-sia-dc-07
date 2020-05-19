@@ -26,9 +26,7 @@ def main():
 
     print('Listening on {}:{}'.format(BIND_IP, BIND_PORT))
 
-    # accept_connections(server)
-    print(calculate_crc(
-        b'\n0C380027"ADM-CID"0010L0#1002[#1002|1602 00 000]\r'))
+    accept_connections(server)
 
     server.close()
 
