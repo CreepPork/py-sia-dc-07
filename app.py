@@ -26,7 +26,9 @@ def main():
 
     print('Listening on {}:{}'.format(BIND_IP, BIND_PORT))
 
-    accept_connections(server)
+    # accept_connections(server)
+    print(calculate_crc(
+        b'\n0C380027"ADM-CID"0010L0#1002[#1002|1602 00 000]\r'))
 
     server.close()
 
@@ -218,7 +220,7 @@ def get_message_contents_with_id(request: bytes) -> bytes:
 def calculate_crc(request: bytes) -> str:
     message = get_message_contents_with_id(request)
 
-    return format(crccheck.crc.CrcArc.calc(message), 'x').upper()
+    return crccheck.crc.CrcArc().process(message).finalhex().upper()
 
 
 def calculate_message_length(request: bytes) -> str:
