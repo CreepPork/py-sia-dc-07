@@ -11,6 +11,7 @@ pycodestyle==2.6.0
 pylint==2.5.2
 python-dotenv==0.13.0
 requests==2.23.0
+rope==0.17.0
 six==1.14.0
 toml==0.10.1
 typed-ast==1.4.1
