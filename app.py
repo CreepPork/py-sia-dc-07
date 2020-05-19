@@ -25,7 +25,10 @@ def main():
 
     print('Listening on {}:{}'.format(BIND_IP, BIND_PORT))
 
-    accept_connections(server)
+    # accept_connections(server)
+    request = b'\n9EC40027"ADM-CID"0001L0#1002[#1002|1602 00 001]\r'
+    process_request_data(request)
+    send_nak_message(None, request)
 
     server.close()
 
