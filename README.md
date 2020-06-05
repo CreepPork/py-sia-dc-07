@@ -20,18 +20,18 @@ Example result:
 
 ```json
 {
-  "sequence_number": 1,
-  "reciever_number": -1,
-  "line_number": 0,
-  "account_number": 1002,
-  "event_qualifier": 1,
-  "event_code": 602,
-  "group_or_partion_number": "00",
-  "zone_number_or_user_number": "001"
+    "sequence_number": "1",
+    "reciever_number": "0",
+    "line_number": "0",
+    "account_number": 1002,
+    "event_qualifier": 1,
+    "event_code": 602,
+    "group_or_partion_number": "00",
+    "zone_number_or_user_number": "001"
 }
 ```
 
-_Note:_ If the line or reciever number is not provided, it will be set to `-1`.
+_Note:_ If the line or reciever number is not provided, it will be set to `0`.
 
 ## Installation
 

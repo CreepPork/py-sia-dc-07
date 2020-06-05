@@ -124,7 +124,7 @@ def process_request_data(request: bytes) -> bool and dict:
         reciever_number = re.findall(r'R[0-9]*#', payload_end)[0]
         reciever_number = re.findall(r'[0-9]+', reciever_number)[0]
     except IndexError:
-        reciever_number = 0
+        reciever_number = '0'
 
     # Line number
     line_number = None
@@ -133,7 +133,7 @@ def process_request_data(request: bytes) -> bool and dict:
         line_number = re.findall(r'L[0-9]*#', payload_end)[0]
         line_number = re.findall(r'[0-9]+', line_number)[0]
     except IndexError:
-        line_number = 0
+        line_number = '0'
 
     # All data starts with [ and ends with ]
     message_block = re.findall(r'\[(.*?)\]', payload_end)[0]
