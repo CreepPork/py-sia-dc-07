@@ -26,7 +26,7 @@ Example result:
     "account_number": 1002,
     "event_qualifier": 1,
     "event_code": 602,
-    "group_or_partion_number": "00",
+    "group_or_partition_number": "00",
     "zone_number_or_user_number": "001"
 }
 ```

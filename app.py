@@ -180,7 +180,7 @@ def parse_adc_cid_message(message: str, seq_num: str, rec_num: str, ln_num: str)
     event_code = int(contact_id[0][1:], 10)
 
     # 2 decimal(!) digits GG, 00 if no info (e.g. 01)
-    group_or_partion_number = contact_id[1]
+    group_or_partition_number = contact_id[1]
 
     # 3 decimal(!) digits CCC, 000 if no info (e.g. 001)
     zone_number_or_user_number = contact_id[2]
@@ -192,7 +192,7 @@ def parse_adc_cid_message(message: str, seq_num: str, rec_num: str, ln_num: str)
         'account_number': account_number,
         'event_qualifier': event_qualifier,
         'event_code': event_code,
-        'group_or_partion_number': group_or_partion_number,
+        'group_or_partition_number': group_or_partition_number,
         'zone_number_or_user_number': zone_number_or_user_number
     }
 
