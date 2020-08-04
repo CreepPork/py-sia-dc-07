@@ -1,6 +1,6 @@
-# py-sia-dc-07
+# py-sia-dc-09
 
-A simple Python script that listens on a given TCP ip/port and awaits messages from a SIA DC-07 protocol supported device.
+A simple Python script that listens on a given TCP ip/port and awaits messages from a SIA DC-09 (basic) protocol supported device.
 
 The script will handle all device communication with the supported device.
 
@@ -38,7 +38,7 @@ _Note:_ If the line or reciever number is not provided, it will be set to `0`.
 You can install the package via Git and the dependencies via pip. You'll need to configure the `.env` file too:
 
 ```bash
-git clone https://github.com/CreepPork/py-sia-dc-07
+git clone https://github.com/CreepPork/py-sia-dc-09
 pip install -r ./requirements.txt
 cp .env.example .env
 ```
@@ -56,7 +56,7 @@ If you discover any security related issues, please email security@garkaklis.com
 ## Credits
 
 - [Ralfs Garkaklis](https://github.com/CreepPork)
-- [All Contributors](https://github.com/CreepPork/py-sia-dc-07/contributors)
+- [All Contributors](https://github.com/CreepPork/py-sia-dc-09/contributors)
 
 ## License
 
