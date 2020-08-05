@@ -68,8 +68,9 @@ def handle_client_connection(client_socket: socket.create_connection):
             pass
         else:
             send_nak_message(client_socket)
+            client_socket.close()
 
-        client_socket.close()
+        # Don't close the socket, let it be closed by the client
     except Exception as e:
         print('{} in handle_client_connection'.format(e))
         if client_socket:
