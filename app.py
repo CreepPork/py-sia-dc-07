@@ -52,7 +52,7 @@ def accept_connections(server):
             print('{} in accept_connections'.format(e))
             if client_sock:
                 print('Closing client socket in accept_connections.')
-                client_sock.close()
+                # client_sock.close()
             break
 
 
@@ -68,14 +68,14 @@ def handle_client_connection(client_socket: socket.create_connection):
             pass
         else:
             send_nak_message(client_socket)
-            client_socket.close()
+            # client_socket.close()
 
         # Don't close the socket, let it be closed by the client
     except Exception as e:
         print('{} in handle_client_connection'.format(e))
         if client_socket:
             print('Closing client socket in handle_client_connection')
-            client_socket.close()
+            # client_socket.close()
 
         raise Exception
 
@@ -106,7 +106,7 @@ def process_request_data(request: bytes) -> bool and dict:
     packet_length_payload = payload[5:9]
 
     if packet_length_payload != calculate_message_length(request):
-        print('Packet length does not match, ignoring.')
+        print('Packet length does not match, ignoring check.')
 
     # Split the payload into managable chunks later
     split_payload = payload.split('"')
@@ -248,6 +248,8 @@ def send_ack_message(client_socket: socket.create_connection, result: dict):
         + calculate_message_length(message.encode('ASCII')) \
         + message
 
+    print('Sending message {} back to socket'.format(message.encode('ASCII')))
+
     client_socket.send(message.encode('ASCII'))
 
 
@@ -260,6 +262,8 @@ def send_nak_message(client_socket: socket.create_connection):
         + calculate_crc(message.encode('ASCII')) \
         + calculate_message_length(message.encode('ASCII')) \
         + message
+
+    print('Sending message {} back to socket'.format(message.encode('ASCII')))
 
     client_socket.send(message.encode('ASCII'))
 
