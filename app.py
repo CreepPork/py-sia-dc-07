@@ -105,7 +105,8 @@ def process_request_data(request: bytes) -> bool and dict:
     # <0LLL> (e.g. 0027)
     packet_length_payload = payload[5:9]
 
-    if packet_length_payload != calculate_message_length(request):
+    if packet_length_payload != calculate_message_length_secolink(request):
+        print(packet_length_payload, calculate_message_length_secolink(request))
         print('Packet length does not match, ignoring check.')
 
     # Split the payload into managable chunks later
@@ -223,8 +224,15 @@ def calculate_crc(request: bytes) -> str:
 
 
 def calculate_message_length(request: bytes) -> str:
-    # This should be per the standard, but my PE doesn't like this
+    # This should be per the standard, but my PE doesn't like this (see below function)
     message = get_message_contents_with_id(request)
+
+    return f'{len(message):04}'
+
+
+def calculate_message_length_secolink(request: bytes) -> str:
+    # Secolink has a broken implementation of this on their LAN800
+    message = request[:-1].decode('ASCII').split('"')[2][3:].encode('ASCII')
 
     return f'{len(message):04}'
 
@@ -245,7 +253,7 @@ def send_ack_message(client_socket: socket.create_connection, result: dict):
 
     message = '\n' \
         + calculate_crc(message.encode('ASCII')) \
-        + calculate_message_length(message.encode('ASCII')) \
+        + calculate_message_length_secolink(message.encode('ASCII')) \
         + message
 
     print('Sending message {} back to socket'.format(message.encode('ASCII')))
@@ -260,7 +268,7 @@ def send_nak_message(client_socket: socket.create_connection):
 
     message = '\n' \
         + calculate_crc(message.encode('ASCII')) \
-        + calculate_message_length(message.encode('ASCII')) \
+        + calculate_message_length_secolink(message.encode('ASCII')) \
         + message
 
     print('Sending message {} back to socket'.format(message.encode('ASCII')))
