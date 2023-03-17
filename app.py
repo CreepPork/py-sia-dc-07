@@ -21,6 +21,7 @@ MESSAGE_RELAY_BEARER_TOKEN = os.getenv('MESSAGE_RELAY_BEARER_TOKEN')
 
 def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind((BIND_IP, BIND_PORT))
     server.listen(5)
 
@@ -225,11 +226,9 @@ def calculate_crc(request: bytes) -> str:
 
 def calculate_message_length(request: bytes) -> str:
     message = get_message_contents_with_id(request)
-    lenght=pass_hexadecimal(len(message))
-    return f'{lenght.zfill(4)}'
+    hex_length = hex(len(message)).split('x')[1]
 
-def pass_hexadecimal(decimal: str):
-    return hex(decimal).split('x')[1]
+    return hex_length.zfill(4)
 
 
 def generate_timestamp() -> str:

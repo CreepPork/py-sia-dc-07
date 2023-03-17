@@ -6,14 +6,13 @@ from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv())
 
-BIND_IP = os.getenv('BIND_IP')
 BIND_PORT = int(os.getenv('BIND_PORT'))
 
 # create an ipv4 (AF_INET) socket object using the tcp protocol (SOCK_STREAM)
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # connect the client
-client.connect((BIND_IP, BIND_PORT))
+client.connect(('127.0.0.1', BIND_PORT))
 
 ex_data = [
     b'\n9EC40027"ADM-CID"0001L0#1002[#1002|1602 00 001]\r',
