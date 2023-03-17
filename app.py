@@ -224,10 +224,12 @@ def calculate_crc(request: bytes) -> str:
 
 
 def calculate_message_length(request: bytes) -> str:
-    # This should be per the standard, but my PE doesn't like this
     message = get_message_contents_with_id(request)
+    lenght=pass_hexadecimal(len(message))
+    return f'{lenght.zfill(4)}'
 
-    return f'{len(message)+1:04}'
+def pass_hexadecimal(decimal: str):
+    return hex(decimal).split('x')[1]
 
 
 def generate_timestamp() -> str:
